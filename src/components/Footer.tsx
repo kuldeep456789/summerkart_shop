@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">ShopSavvy</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Summerkart</h2>
             <p className="text-gray-600 mb-4 max-w-md">
               Modern e-commerce platform providing quality products with exceptional shopping experience.
             </p>
@@ -72,7 +72,7 @@ const Footer = () => {
         
         <div className="mt-12 border-t border-gray-200 pt-8">
           <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} ShopSavvy. All rights reserved.
+            &copy; {new Date().getFullYear()} Summerkart. All rights reserved.
           </p>
         </div>
       </div>

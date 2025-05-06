@@ -35,7 +35,7 @@ const Navbar = () => {
             </button>
             
             <Link to="/" className="text-2xl font-bold text-gray-900">
-              ShopSavvy
+              Summerkart
             </Link>
           </div>
 
