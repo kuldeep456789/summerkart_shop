@@ -1,12 +1,19 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Minus, Plus, ShoppingBag, Trash2, ArrowLeft, ArrowRight } from "lucide-react";
+import { Minus, Plus, ShoppingBag, Trash2, ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/hooks/useCart";
 import { useToast } from "@/hooks/use-toast";
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext
+} from "@/components/ui/carousel";
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity, clearCart, getCartTotal } = useCart();
@@ -89,15 +96,36 @@ const Cart = () => {
                       return (
                         <tr key={`${item.id}-${item.selectedColor}-${item.selectedSize}`}>
                           <td className="py-4 px-4">
-                            <div className="flex items-center">
-                              <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                <img
-                                  src={item.images[0]}
-                                  alt={item.name}
-                                  className="h-full w-full object-cover object-center"
-                                />
+                            <div className="flex flex-col md:flex-row md:items-center">
+                              {/* Image Slider */}
+                              <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200 mb-2 md:mb-0 relative">
+                                {item.images.length > 1 ? (
+                                  <Carousel className="w-24 h-24">
+                                    <CarouselContent>
+                                      {item.images.map((image, index) => (
+                                        <CarouselItem key={index}>
+                                          <div className="h-24 w-24 flex items-center justify-center">
+                                            <img
+                                              src={image}
+                                              alt={`${item.name} - Image ${index + 1}`}
+                                              className="h-full w-full object-cover object-center"
+                                            />
+                                          </div>
+                                        </CarouselItem>
+                                      ))}
+                                    </CarouselContent>
+                                    <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 h-6 w-6 bg-white/80 hover:bg-white shadow" />
+                                    <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 h-6 w-6 bg-white/80 hover:bg-white shadow" />
+                                  </Carousel>
+                                ) : (
+                                  <img
+                                    src={item.images[0]}
+                                    alt={item.name}
+                                    className="h-full w-full object-cover object-center"
+                                  />
+                                )}
                               </div>
-                              <div className="ml-4">
+                              <div className="ml-0 md:ml-4 mt-2 md:mt-0">
                                 <h3 className="text-sm font-medium text-gray-900">{item.name}</h3>
                                 {item.selectedColor && (
                                   <p className="text-xs text-gray-500 mt-1">Color: {item.selectedColor}</p>
