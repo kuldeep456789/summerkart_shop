@@ -69,12 +69,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
-        <div className="mt-12 border-t border-gray-200 pt-8">
-          <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} Summerkart. All rights reserved.
-          </p>
-        </div>
+
       </div>
     </footer>
   );
